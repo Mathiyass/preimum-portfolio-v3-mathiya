@@ -1,224 +1,168 @@
 <!DOCTYPE html>
-<html class="dark" lang="en">
+<html lang="en">
 <head>
-    <meta charset="utf-8"/>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-    <title>Sanda Roo | Creative Director & Designer</title>
-    
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&family=Inter:wght@300;400;500;600&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
-    
-    <!-- Tailwind CDN with Configuration -->
-    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <script>
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    colors: {
-                        "background": "#0a0a0a",
-                        "on-surface": "#fbfaf6",
-                        "primary": "#fbfaf6",
-                        "secondary": "#8b8b8b",
-                        "surface-container": "#201f1f",
-                        "surface-container-lowest": "#0e0e0e",
-                        "outline-variant": "#474747",
-                    },
-                    fontFamily: {
-                        "headline": ["Manrope", "sans-serif"],
-                        "body": ["Inter", "sans-serif"],
-                    },
-                    animation: {
-                        'reveal': 'reveal 1s cubic-bezier(0.77, 0, 0.175, 1) forwards',
-                    },
-                    keyframes: {
-                        reveal: {
-                            '0%': { transform: 'translateY(100%)', opacity: '0' },
-                            '100%': { transform: 'translateY(0)', opacity: '1' },
-                        }
-                    }
-                },
-            },
-        }
-    </script>
-    
-    <link rel="stylesheet" href="style.css"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sanda Roo | Elite Creative Direction</title>
+    <meta name="description" content="Elite Creative Direction and Visual Strategy for high-fashion and architectural brands.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-background text-on-surface font-body selection:bg-primary selection:text-on-primary overflow-x-hidden">
+<body class="bg-void text-silver antialiased selection:bg-silver selection:text-void overflow-x-hidden">
+
+    <!-- Custom Cursor -->
+    <div id="cursor" class="fixed top-0 left-0 w-8 h-8 rounded-full border border-silver pointer-events-none z-[9999] mix-blend-difference transition-transform duration-100 ease-out hidden lg:block"></div>
+    <div id="cursor-dot" class="fixed top-0 left-0 w-1 h-1 rounded-full bg-silver pointer-events-none z-[9999] hidden lg:block"></div>
+
+    <!-- SVG Grain Filter -->
+    <svg class="fixed inset-0 pointer-events-none opacity-[0.03] z-[9998] mix-blend-overlay">
+        <filter id="noise">
+            <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/>
+            <feColorMatrix type="saturate" values="0"/>
+        </filter>
+        <rect width="100%" height="100%" filter="url(#noise)"/>
+    </svg>
+
     <!-- Navigation -->
-    <nav class="fixed top-0 w-full z-50 glass-nav">
-        <div class="flex justify-between items-center px-8 py-6 max-w-[1440px] mx-auto">
-            <div class="text-xl font-headline font-bold tracking-tighter">
-                <span class="text-primary">sanda</span><span class="text-secondary">.roo</span>
-            </div>
-            <div class="hidden md:flex gap-12 items-center font-headline font-bold tracking-tighter text-sm uppercase">
-                <a class="nav-link active" href="#hero">Home</a>
-                <a class="nav-link" href="#work">Work</a>
-                <a class="nav-link" href="#process">Process</a>
-                <a class="nav-link" href="#about">About</a>
-                <a class="nav-link" href="#contact">Contact</a>
-            </div>
-            <div class="status-badge hidden sm:flex">
-                <span class="status-dot"></span>
-                <span class="status-text">Available Q4 2024</span>
-            </div>
+    <nav id="navbar" class="fixed top-0 left-0 w-full z-[100] px-8 md:px-16 py-8 flex justify-between items-center mix-blend-difference transition-all duration-700">
+        <a href="#" class="text-2xl font-bold tracking-tighter uppercase">Roo</a>
+        <div class="space-x-12 hidden md:flex font-medium text-[10px] uppercase tracking-[0.3em]">
+            <a href="#work" class="nav-link">Selected Works</a>
+            <a href="#about" class="nav-link">Philosophy</a>
+            <a href="#contact" class="nav-link">Inquiry</a>
         </div>
+        <button class="md:hidden">
+            <div class="w-6 h-[1px] bg-silver mb-1"></div>
+            <div class="w-4 h-[1px] bg-silver ml-auto"></div>
+        </button>
     </nav>
 
     <main>
-        <!-- Hero -->
-        <section id="hero" class="min-h-screen flex flex-col justify-center px-8 md:px-24">
-            <div class="max-w-[1440px] mx-auto w-full">
-                <span class="label-md reveal">Creative Director & Designer</span>
-                <h1 class="display-lg mt-6 reveal" style="transition-delay: 0.1s">
-                    Directing<br/>Digital<br/>Craft.
-                </h1>
-                <p class="font-body text-xl md:text-2xl text-secondary max-w-2xl mt-12 reveal" style="transition-delay: 0.2s">
-                    A multidisciplinary studio focusing on high-end editorial experiences and cinematic brand identities for the modern era.
-                </p>
-                <div class="mt-16 reveal" style="transition-delay: 0.3s">
-                    <a href="#work" class="btn-primary">View Selected Works</a>
+        <!-- Hero Section: Asymmetrical Editorial -->
+        <section class="min-h-screen flex flex-col justify-center px-8 md:px-16 pt-32 pb-24 relative">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-0 relative z-10">
+                <div class="lg:col-span-8 flex flex-col justify-end">
+                    <h1 class="text-[clamp(3rem,10vw,12rem)] leading-[0.85] font-extrabold tracking-tighter uppercase mb-12 mix-blend-difference reveal">
+                        Atmospheric<br>Minimalism
+                    </h1>
+                </div>
+                <div class="lg:col-span-4 self-end reveal-delayed max-w-xs ml-auto">
+                    <p class="text-xs uppercase tracking-widest leading-relaxed opacity-60 mb-8">
+                        Creative Direction & Visual Strategy for the selective. 
+                        Defining the tension between void and form.
+                    </p>
+                    <div class="h-[1px] w-12 bg-silver opacity-30"></div>
+                </div>
+            </div>
+
+            <!-- Absolute Visual Layer -->
+            <div class="absolute right-[5%] top-[20%] w-[35vw] aspect-[3/4] overflow-hidden reveal brightness-50 contrast-125 z-0 grayscale shadow-2xl">
+                <img src="hero_elite.png" alt="Hero Background" class="w-full h-full object-cover">
+            </div>
+
+            <!-- Vertical Marquee -->
+            <div class="absolute left-0 bottom-12 w-full overflow-hidden whitespace-nowrap opacity-5 pointer-events-none select-none">
+                <div class="text-[12vw] font-black uppercase tracking-tighter animate-marquee">
+                    Creative Direction — Visual Identity — Spatial Design — 
                 </div>
             </div>
         </section>
 
-        <!-- Works -->
-        <section id="work" class="section-alt">
-            <div class="max-w-[1440px] mx-auto">
-                <div class="flex flex-col md:flex-row justify-between items-end mb-24 reveal">
+        <!-- Selected Works: Offset Grid -->
+        <section id="work" class="py-32 bg-surface-base">
+            <div class="px-8 md:px-16">
+                <div class="flex justify-between items-end mb-32 reveal">
                     <div>
-                        <span class="label-md">Selected Projects</span>
-                        <h2 class="headline-lg mt-4">The Monolith Series</h2>
+                        <span class="text-[10px] uppercase tracking-[0.4em] mb-4 block opacity-40">Portfolio</span>
+                        <h2 class="text-5xl font-bold uppercase tracking-tight">Works</h2>
                     </div>
-                    <p class="text-secondary max-w-md mt-6 md:mt-0">
-                        A curation of works that define the intersection of strategic clarity and uncompromising craft.
-                    </p>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-                    <!-- Project 1 -->
-                    <div class="glass-card p-4 reveal">
-                        <div class="img-container aspect-[4/5] bg-surface-highest">
-                            <img src="project1.png" alt="Vogue Noir" class="w-full h-full object-cover grayscale opacity-80 hover:grayscale-0 hover:opacity-100"/>
+                <div class="space-y-64">
+                    <!-- Work Item 01: Left Offset -->
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 group reveal">
+                        <div class="lg:col-span-7 relative overflow-hidden aspect-[4/5] lg:aspect-[16/9] shadow-inner-void">
+                            <img src="work1_elite.png" alt="Brutalist Project" class="w-full h-full object-cover scale-110 group-hover:scale-100 transition-transform duration-1000">
+                            <div class="absolute inset-0 bg-void/20 group-hover:bg-void/0 transition-colors"></div>
                         </div>
-                        <div class="mt-8 flex justify-between items-start px-2">
-                            <div>
-                                <h3 class="text-xl font-bold font-headline">Vogue Noir</h3>
-                                <p class="text-secondary text-sm mt-1">Editorial Experience / 2024</p>
-                            </div>
-                            <span class="material-symbols-outlined text-primary cursor-pointer hover:translate-x-1 transition-transform">arrow_outward</span>
+                        <div class="lg:col-span-5 flex flex-col justify-center lg:pl-12">
+                            <span class="text-[8px] uppercase tracking-[0.5em] mb-4 opacity-50">High Fashion Identity</span>
+                            <h3 class="text-3xl font-light mb-6 uppercase tracking-wider">Vogue Noir</h3>
+                            <p class="text-sm opacity-60 max-w-sm leading-relaxed mb-8">
+                                Redefining the digital presence for high-fashion editorial. A study in extreme contrast and typographic tension.
+                            </p>
+                            <a href="#" class="text-[10px] uppercase tracking-[0.3em] font-bold group-hover:pl-4 transition-all duration-500">View Project</a>
                         </div>
                     </div>
-                    <!-- Project 2 -->
-                    <div class="glass-card p-4 reveal" style="transition-delay: 0.2s">
-                        <div class="img-container aspect-[4/5] bg-surface-highest">
-                            <img src="project2.png" alt="Aeon Identity" class="w-full h-full object-cover grayscale opacity-80 hover:grayscale-0 hover:opacity-100"/>
+
+                    <!-- Work Item 02: Right Offset / Swapped -->
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 group reveal">
+                        <div class="lg:col-start-7 lg:col-span-6 relative overflow-hidden aspect-[4/5] lg:aspect-[16/9] shadow-inner-void lg:order-2">
+                            <img src="work2_elite.png" alt="Aeon Identity" class="w-full h-full object-cover scale-110 group-hover:scale-100 transition-transform duration-1000">
                         </div>
-                        <div class="mt-8 flex justify-between items-start px-2">
-                            <div>
-                                <h3 class="text-xl font-bold font-headline">Aeon Identity</h3>
-                                <p class="text-secondary text-sm mt-1">Brand Strategy / 2023</p>
-                            </div>
-                            <span class="material-symbols-outlined text-primary cursor-pointer hover:translate-x-1 transition-transform">arrow_outward</span>
+                        <div class="lg:col-span-5 flex flex-col justify-center text-right lg:pr-12 lg:order-1">
+                            <span class="text-[8px] uppercase tracking-[0.5em] mb-4 opacity-50">Spatial Narrative</span>
+                            <h3 class="text-3xl font-light mb-6 uppercase tracking-wider">Aeon Studio</h3>
+                            <p class="text-sm opacity-60 max-w-sm ml-auto leading-relaxed mb-8">
+                                An exploration of spatial design through abstract geometry. Creating architectural resonance in a digital void.
+                            </p>
+                            <a href="#" class="text-[10px] uppercase tracking-[0.3em] font-bold group-hover:pr-4 transition-all duration-500">View Project</a>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Process -->
-        <section id="process">
-            <div class="max-w-[1440px] mx-auto">
-                <div class="text-center mb-32 reveal">
-                    <span class="label-md">Methodology</span>
-                    <h2 class="display-lg mt-6" style="font-size: clamp(2rem, 5vw, 4rem)">Defining the Standard.</h2>
+        <!-- Philosophy Section -->
+        <section id="about" class="py-48 relative overflow-hidden">
+            <div class="max-w-6xl mx-auto px-8 md:px-16 grid grid-cols-1 lg:grid-cols-2 gap-32 items-center relative z-10">
+                <div class="order-2 lg:order-1 reveal">
+                    <span class="text-[10px] uppercase tracking-[0.4em] mb-8 block opacity-40">The Vision</span>
+                    <h2 class="text-5xl font-extrabold uppercase mb-12 tracking-tighter">The Silence<br>Between Forms.</h2>
+                    <p class="text-lg font-light leading-relaxed opacity-70 mb-12 italic">
+                        "Great design is not what is visible, but what is felt. I design for the resonance of the void."
+                    </p>
+                    <p class="text-sm leading-relaxed opacity-50 max-w-md">
+                        Sanda Roo is a creative strategist specializing in ultra-luxury visual identities. By merging brutalist principles with delicate editorial sensibilities, every project becomes a timeless statement.
+                    </p>
                 </div>
-
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                    <div class="glass-card p-12 reveal">
-                        <span class="text-4xl font-headline font-bold text-outline">01</span>
-                        <h3 class="headline-lg mt-8 mb-4" style="font-size: 1.5rem">Insight</h3>
-                        <p class="text-secondary text-sm leading-relaxed">Deep immersion into the brand's core values and market landscape.</p>
-                    </div>
-                    <div class="glass-card p-12 reveal" style="transition-delay: 0.1s">
-                        <span class="text-4xl font-headline font-bold text-outline">02</span>
-                        <h3 class="headline-lg mt-8 mb-4" style="font-size: 1.5rem">Concept</h3>
-                        <p class="text-secondary text-sm leading-relaxed">Developing a singular, powerful narrative that bridges the vision gap.</p>
-                    </div>
-                    <div class="glass-card p-12 reveal" style="transition-delay: 0.2s">
-                        <span class="text-4xl font-headline font-bold text-outline">03</span>
-                        <h3 class="headline-lg mt-8 mb-4" style="font-size: 1.5rem">Craft</h3>
-                        <p class="text-secondary text-sm leading-relaxed">Iterative design where every pixel is scrutinized for perfection.</p>
-                    </div>
-                    <div class="glass-card p-12 reveal" style="transition-delay: 0.3s">
-                        <span class="text-4xl font-headline font-bold text-outline">04</span>
-                        <h3 class="headline-lg mt-8 mb-4" style="font-size: 1.5rem">Impact</h3>
-                        <p class="text-secondary text-sm leading-relaxed">Launching curated experiences that resonate on an emotional level.</p>
+                <div class="order-1 lg:order-2 flex justify-center reveal">
+                    <div class="relative w-full max-w-md aspect-square bg-surface-high shadow-2xl overflow-hidden p-[1px]">
+                         <img src="portrait_elite.png" alt="Sanda Roo" class="w-full h-full object-cover grayscale brightness-90 hover:brightness-110 transition-all duration-700">
                     </div>
                 </div>
             </div>
-        </section>
-
-        <!-- About -->
-        <section id="about" class="section-alt">
-            <div class="max-w-[1440px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
-                <div class="img-container aspect-square reveal">
-                    <img src="portrait.png" alt="Sanda Roo" class="w-full h-full object-cover grayscale brightness-75 hover:brightness-100 transition-all"/>
-                </div>
-                <div>
-                    <span class="label-md reveal">Creative Philosophy</span>
-                    <h2 class="headline-lg mt-6 reveal" style="font-size: clamp(2rem, 4vw, 3rem)">Championing the Invisible Details.</h2>
-                    <p class="font-body text-lg text-secondary mt-12 reveal" style="transition-delay: 0.1s">
-                        With over a decade of experience leading creative teams, I believe that high-end design is not about decoration, but about the subtraction of noise until only the essence remains.
-                    </p>
-                    <p class="font-body text-lg text-secondary mt-8 reveal" style="transition-delay: 0.2s">
-                        My work has been recognized globally for its minimalist aesthetic and functional elegance, helping luxury brands find their digital voice.
-                    </p>
-                    <div class="mt-16 reveal" style="transition-delay: 0.3s">
-                        <a href="mailto:hello@sandaroo.com" class="text-primary font-headline font-bold border-b border-primary pb-1 hover:text-secondary hover:border-secondary transition-colors italic">Read Full Bio</a>
-                    </div>
-                </div>
+            <!-- Background Text Decoration -->
+            <div class="absolute right-0 top-1/2 -translate-y-1/2 text-[30vw] font-black text-silver/[0.02] pointer-events-none select-none -z-0">
+                NOIR
             </div>
         </section>
 
-        <!-- Contact -->
-        <section id="contact">
-            <div class="max-w-[1440px] mx-auto">
-                <div class="glass-card p-12 md:p-24 reveal">
-                    <div class="max-w-2xl mx-auto text-center">
-                        <span class="label-md">Get in Touch</span>
-                        <h2 class="display-lg mt-6" style="font-size: clamp(2rem, 6vw, 5rem)">Start a Project.</h2>
-                        <p class="text-secondary mt-8">Currently accepting commissions for Q4 2024.</p>
-                        
-                        <form class="mt-16 text-left flex flex-col gap-8">
-                            <div class="relative">
-                                <input type="text" placeholder="Name" class="w-full bg-transparent border-b border-outline-variant py-4 focus:outline-none focus:border-primary transition-colors text-xl font-headline"/>
-                            </div>
-                            <div class="relative">
-                                <input type="email" placeholder="Email" class="w-full bg-transparent border-b border-outline-variant py-4 focus:outline-none focus:border-primary transition-colors text-xl font-headline"/>
-                            </div>
-                            <div class="relative">
-                                <textarea placeholder="Message" rows="4" class="w-full bg-transparent border-b border-outline-variant py-4 focus:outline-none focus:border-primary transition-colors text-xl font-headline resize-none"></textarea>
-                            </div>
-                            <button type="submit" class="btn-primary mt-8 self-center">Send Inquiry</button>
-                        </form>
-                    </div>
+        <!-- Contact Section -->
+        <section id="contact" class="py-32 bg-void">
+            <div class="px-8 md:px-16 text-center reveal">
+                <div class="h-[1px] w-24 bg-silver opacity-20 mx-auto mb-16"></div>
+                <h2 class="text-6xl md:text-8xl font-black uppercase tracking-tighter mb-12">Start the<br>Dialogue</h2>
+                <p class="text-sm opacity-40 uppercase tracking-[0.5em] mb-12 italic">Inquiries for select collaborators only.</p>
+                <a href="mailto:hello@sandaroo.com" class="text-2xl md:text-3xl font-light hover:opacity-50 transition-opacity underline underline-offset-8">hello@sandaroo.com</a>
+                
+                <div class="mt-32 flex justify-center space-x-12 text-[10px] uppercase tracking-widest opacity-30">
+                    <a href="#" class="hover:text-silver transition-colors">Instagram</a>
+                    <a href="#" class="hover:text-silver transition-colors">LinkedIn</a>
+                    <a href="#" class="hover:text-silver transition-colors">Twitter</a>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer class="py-12 px-8 border-t border-outline-variant">
-        <div class="max-w-[1440px] mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
-            <div class="text-sm font-headline tracking-widest text-secondary uppercase">
-                © 2024 The Digital Gallery. All Rights Reserved.
-            </div>
-            <div class="flex gap-8 text-xs font-bold uppercase tracking-widest">
-                <a href="#" class="hover:text-primary text-secondary transition-colors">LinkedIn</a>
-                <a href="#" class="hover:text-primary text-secondary transition-colors">Instagram</a>
-                <a href="#" class="hover:text-primary text-secondary transition-colors">Behance</a>
-            </div>
-        </div>
+    <footer class="py-12 px-8 md:px-16 bg-void border-t border-silver/5 flex justify-between items-center">
+        <span class="text-[8px] uppercase tracking-[0.3em] opacity-40">&copy; 2024 Sanda Roo. All Rights Reserved.</span>
+        <span class="text-[8px] uppercase tracking-[0.3em] opacity-40">Elite Portfolio v3.2</span>
     </footer>
 
     <script src="main.js"></script>
